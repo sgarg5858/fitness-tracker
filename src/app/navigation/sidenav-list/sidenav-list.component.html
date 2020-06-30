@@ -1,4 +1,9 @@
 <mat-nav-list>
+  <mat-list-item fxLayout fxLayoutAlign="flex-end"> 
+    <button  mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-list-item >
     <a mat-list-item routerLink="/signup" (click)="onClose()"  >
     <mat-icon>face</mat-icon>
     <span class="nav-caption">Sign Up</span>
