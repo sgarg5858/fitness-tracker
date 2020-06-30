@@ -1,10 +1,53 @@
-<section>
-    <form>
-        <mat-form-field>
-            <input matInput type="email" placeholder="Enter your email id" />
+<section class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="12px" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-form-field >
+            <input 
+            matInput 
+            type="email" 
+            placeholder="Enter your email id*" 
+            formControlName="email"
+            #email
+            />
+            <mat-error *ngIf="!signupForm.get('email').valid">
+                <span *ngIf="signupForm.get('email').errors['required']">Email is required</span>
+                <span *ngIf="signupForm.get('email').errors['email']">Enter Valid Email</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field hintLabel="Should contain 6 to 12 characters">
+            <input 
+            matInput 
+            type="password" 
+            placeholder="Enter your password*" 
+            formControlName="password"
+            #password 
+            />
+            <mat-hint align="end">{{password.value.length}}</mat-hint>
+            <mat-error *ngIf="!signupForm.get('password').valid" >
+                <span *ngIf="signupForm.get('password').errors['required']">
+                    Password is required
+                </span>
+                <span *ngIf="signupForm.get('password').errors['minlength']">
+                    Password should contain minimum 6 characters
+                </span>
+                <span *ngIf="signupForm.get('password').errors['maxlength']">
+                    Password should contain maximum 12 characters
+                </span>
+            </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="password" placeholder="Enter your password" />
+            <input 
+            matInput 
+            placeholder="Your birthdate" 
+            [matDatepicker]="picker" 
+            [max]="maxDate"
+            [min]="minDate"
+            formControlName="dob"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Your age should be between 10 and 90 years</mat-hint>
         </mat-form-field>
+            <mat-checkbox formControlName="agreement" color="primary">Agree to terms and conditions.</mat-checkbox>
+        <button [disabled]="!signupForm.valid" type="submit" mat-raised-button color="primary">Sign up</button>
     </form>
 </section>
