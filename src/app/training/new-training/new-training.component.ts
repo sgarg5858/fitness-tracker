@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class NewTrainingComponent implements OnInit {
 
   constructor() { }
+
+  @Output() startTraining=new EventEmitter<void>();
+
   workouts=['Pushups','Jumping','Pullups','Crunches','Plank','Sides'];
   workoutForm:FormGroup;
 
@@ -20,7 +23,8 @@ export class NewTrainingComponent implements OnInit {
   startWorkout()
   {
     console.log(this.workoutForm);
-    // this.workoutForm.reset();
+    this.startTraining.emit();
+    
   }
 
 }
