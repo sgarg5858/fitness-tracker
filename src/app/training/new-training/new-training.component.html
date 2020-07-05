@@ -8,7 +8,7 @@
            
                 <mat-form-field>
                     <mat-select placeholder="Select Training" formControlName="workout">
-                        <mat-option *ngFor="let training of trainings" [value]="training.id">
+                        <mat-option *ngFor="let training of trainings" [value]="training.name">
                             {{training.name}}
                         </mat-option>
                     </mat-select>

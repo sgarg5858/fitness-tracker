@@ -14,13 +14,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const materialModules=[
     MatButtonModule,MatIconModule,MatInputModule,
     MatFormFieldModule,MatDatepickerModule,MatNativeDateModule,
     MatCheckboxModule,MatSidenavModule,MatToolbarModule,
     MatListModule,MatTabsModule,MatCardModule,MatSelectModule,
-    MatProgressSpinnerModule,MatDialogModule
+    MatProgressSpinnerModule,MatDialogModule,MatTableModule,
+    MatSortModule,MatPaginatorModule
 ];
 
 @NgModule({

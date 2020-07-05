@@ -4,10 +4,10 @@
     </div>
     <div style="margin-left: 20px;" fxLayout fxLayoutAlign="flex-end" fxHide.xs fxHide.sm >
       <ul fxLayout fxLayoutGap="2vw" class="navigation-items">
-        <li> <a routerLink="/signup" >Sign Up</a></li>
-        <li> <a routerLink="/login" > Login</a></li>
-        <li> <a routerLink="/training" >Training</a></li>
-        <li> <a routerLink="/training" >Logout</a></li>
+        <li *ngIf="!isAuthenicated"> <a routerLink="/signup" >Sign Up</a></li>
+        <li *ngIf="!isAuthenicated"> <a routerLink="/login" > Login</a></li>
+        <li *ngIf="isAuthenicated"> <a routerLink="/training" >Training</a></li>
+        <li *ngIf="isAuthenicated"> <a style="cursor: pointer;"  (click)="onLogout()" >Logout</a></li>
       </ul>
     </div>
     <div fxFlex fxLayoutAlign="flex-end" fxHide.gt-sm>
