@@ -13,21 +13,29 @@ import  'rxjs/add/operator/map';
 export class NewTrainingComponent implements OnInit,OnDestroy {
 
   constructor(private trainingService:TrainingService, private db:AngularFirestore) { }
-  trainings:any;
+  trainings:any=null;
   workoutForm:FormGroup;
   exercisesSubscription:Subscription;
+  isLoading=true;
 
   ngOnInit(): void {
     // this.trainings=this.trainingService.getAvailableExercises();
    
-   this.exercisesSubscription= this.trainingService.exercisesChanged.subscribe((res)=>{
-     console.log(res);
-      this.trainings=res;
+   this.exercisesSubscription= this.trainingService.exercisesChanged.subscribe((trainings)=>{
+     console.log(trainings);
+      this.trainings=trainings;
+      this.isLoading=false;
+    },(error)=>{
+
     });
     this.trainingService.fetchAvailableExercises();
     this.workoutForm=new FormGroup({
       workout: new FormControl('',[Validators.required])
     })
+  }
+  tryFetchingAgain()
+  {
+    this.trainingService.fetchAvailableExercises();
   }
   startWorkout()
   {

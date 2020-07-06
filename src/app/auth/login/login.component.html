@@ -20,6 +20,6 @@
             />
         </mat-form-field>
        
-        <button [disabled]="!loginForm.valid" type="submit" mat-raised-button color="primary">Login</button>
+        <button  [class.spinner]="loading" [disabled]="!loginForm.valid || loading" type="submit" mat-raised-button color="primary">Login</button>
     </form>
 </section>
